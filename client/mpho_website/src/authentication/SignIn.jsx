@@ -1,11 +1,11 @@
 import { SignIn } from "@clerk/clerk-react";
 
-
-export function Login() {
+function Login() {
     return (
         <div>
-            <SignIn signUpUrl="/sign-up" forceRedirectUrl={"/dashboard"} />
+            <SignIn signUpUrl="/sign-up" afterSignInUrl="/dashboard" />
         </div>
     );
 }
 
+export default Login

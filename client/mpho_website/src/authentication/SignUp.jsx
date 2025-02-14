@@ -2,7 +2,7 @@ import {SignUp} from "@clerk/clerk-react"
 
 
 
-export function Register(){
+function Register(){
     return (
         <div>
             <SignUp signInUrl="/login" forceRedirectUrl={"/sign-in"}  />
@@ -11,4 +11,6 @@ export function Register(){
 
     )
 }
+
+export default Register
 

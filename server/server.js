@@ -1,22 +1,22 @@
-import express from 'express';
-import connection from './config.js';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import userRoutes from "./routes/userRoutes.js";
+
+
+dotenv.config();
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-app.get('/',(req,res)=>{
-    connection.query('SELECT * FROM users', (err,rows) => {
-        if(err){
-            console.log(err)
-        } else {
-            res.send(rows)
-        }
-    })
-})
+
+app.use("/api", userRoutes);
 
 
 
-
-app.listen(5000, () => {
-    console.log('Server is running on port 5000')
-} )
-
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
